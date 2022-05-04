@@ -1,0 +1,113 @@
+.sidebar {
+    width: 300px;
+    min-height: 100vh;
+    background-color: #000000a1;
+}
+.menu ul li::marker {
+    content: "";
+}
+.menu {
+    padding-top: 20%;
+}
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+.btn-close-sidebar{
+    position: relative;
+    width: 100%;
+}
+.flex-dashboard-body{
+    display: flex;
+}
+.dashboard-section {
+    position: relative;
+    width: 100%;
+}
+.open-full {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #00000096;
+    padding: 5px;
+    background-color: #00000096;
+    border-radius: 15px;
+    filter: drop-shadow(0px 0px 6.86154px rgba(14, 32, 96, 0.25)) drop-shadow(0px 3.43077px 6.86154px rgba(14, 32, 96, 0.25));
+}
+.open-full:hover {
+    color: #b2b2b2;
+}
+.btn-block-dashboard {
+    margin: 20px;
+}
+.hidden{
+    display: none;
+}
+.modal-body {
+    display: flex;
+    justify-content: space-around;
+}
+.mod-prod-add {
+    width: 500px;
+    height: fit-content;
+    background-color: #fff;
+    filter: drop-shadow(0px 0px 6.86154px rgba(14, 32, 96, 0.25)) drop-shadow(0px 3.43077px 6.86154px rgba(14, 32, 96, 0.25));
+    padding: 30px;
+    position: relative;
+}
+.mod-prod-add .close {
+    position: absolute;
+    right: 6px;
+    top: -7px;
+}
+.add_modal_prod{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.img-rez{
+    width: 100px;
+}
+#result{
+    width: 100%;
+}
+.form-img-prod{
+    display: flex;
+    align-items: center;
+    height: 120px;
+    margin-bottom: 10%;
+}
+.prod-menus{
+    width: 90%;
+}
+.menu-desc {
+    font-size: 12px;
+}
+.edit-prod {
+    display: flex;
+    align-items: center;
+}
+.pero, .del{
+    cursor: pointer;
+    margin-right: 4px;
+}
+.edit-prod-div {
+    display: flex;
+    align-items: center;
+}
+.modal-del {
+    display: flex;
+    justify-content: space-around;
+}
+.deb-block-prod div{
+    display: flex;
+    justify-content: space-around;
+}
+.deb-block-prod img{
+    width: 100%;
+}
+
