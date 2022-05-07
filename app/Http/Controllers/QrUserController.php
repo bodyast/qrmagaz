@@ -24,7 +24,15 @@ class QrUserController extends Controller
 
         $date = date("Y-m-d H:i:s");
 
-        Newclient::create(['user_id'=>$user_id, 'table_id'=> $table->id, 'date' => $date]);
+        $ip = $request->ip();
+        $time = strtotime($date);
+        $time = $time - 43200;
+        $datetu = date("Y-m-d H:i:s", $time);
+
+        $client = Newclient::where('user_id', '=', $user_id)->where('ip', '=', $ip)->where('date', '>', $datetu)->first();
+        if(!$client){
+            Newclient::create(['user_id'=>$user_id, 'table_id'=> $table->id,'ip'=> $ip , 'date' => $date]);
+        }
 
         $category = Category::where('user_id', '=', $user_id)->get();
 
@@ -49,11 +57,12 @@ class QrUserController extends Controller
 
     }
 
-    public function product($key, Request $request){
+    public function product($key, $id, Request $request){
+
+        $product = Product::where('id', '=', $id)->first();
 
 
-
-        return view('client.product');
+        return view('client.product',['product'=>$product]);
 
     }
 

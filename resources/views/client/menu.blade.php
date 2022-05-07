@@ -6,7 +6,7 @@
 @section('page-css')
     <style>
         .mobile-section {
-            background-image: url(/images/fone-bg-1.jpg);
+            /*background-image: url(/images/fone-bg-1.jpg);*/
             background-size: 100%;
             background-attachment: fixed;
         }

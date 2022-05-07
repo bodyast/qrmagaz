@@ -10,7 +10,7 @@ class Newclient extends Model
 
     public $timestamps = false;
     protected $table = 'newclient';
-    protected $fillable = ['user_id', 'table_id', 'date'];
+    protected $fillable = ['user_id', 'table_id','ip', 'date'];
     protected $connection = 'mysql';
 
 }

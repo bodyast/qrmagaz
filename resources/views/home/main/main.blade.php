@@ -63,6 +63,7 @@
         $('.body-page').removeClass('anim-body-page');
     });
 </script>
+<script src="/js/app.js"></script>
 </body>
 
 </html>
