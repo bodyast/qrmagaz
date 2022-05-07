@@ -31,3 +31,4 @@ Footer.component('footer-v', require('./components/footer-v.vue').default);
 const app = new Footer({
     el: '#footer-v'
 });
+
