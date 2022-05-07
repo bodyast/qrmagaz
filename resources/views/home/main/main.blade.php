@@ -21,8 +21,10 @@
 
 
 
-
-@include('home.main.footer')
+<div id="footer-v">
+    <footer-v></footer-v>
+</div>
+{{--@include('home.main.footer')--}}
 @yield('page-script-left')
 @yield('page-script')
 @yield('subpage-scripts')
