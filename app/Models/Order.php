@@ -10,7 +10,7 @@ class Order extends Model
 
     public $timestamps = false;
     protected $table = 'order';
-    protected $fillable = ['user_id', 'table_id','product_id', 'quantity', 'created_at'];
+    protected $fillable = ['user_id', 'table_id','product_id', 'quantity', 'status_order', 'created_at'];
     protected $connection = 'mysql';
 
 }

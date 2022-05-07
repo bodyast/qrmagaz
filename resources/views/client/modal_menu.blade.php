@@ -45,7 +45,7 @@
             <div class="order-menu-modal">
                 <div class="row display-order" style="display: none">
                     <div class="cols-min">
-                        <div class="btn btn-product-bottom menu_btn">
+                        <div id="add_kitchen" class="btn btn-product-bottom menu_btn">
                             Замовити
                         </div>
                     </div>

@@ -100,7 +100,14 @@ class QrUserController extends Controller
 
         $table = QR::where('key', '=', $key)->where('user_id', '=', $user_id)->first();
 
-        Order::create(['user_id'=>$user_id, 'table_id'=> $table->id,'product_id'=> $product->id , 'quantity' => $quantity, 'created_at'=> $date, 'status_order' => 'вибрано']);
+        $order = Order::where('user_id', '=', $user_id)->where('table_id', '=', $table->id)->where('product_id', '=', $product->id)->first();
+
+        if($order){
+            $order->quantity = $order->quantity + $quantity;
+            $order->save();
+        }else{
+            Order::create(['user_id'=>$user_id, 'table_id'=> $table->id,'product_id'=> $product->id , 'quantity' => $quantity, 'created_at'=> $date, 'status_order' => 'вибрано']);
+        }
 
         $order = Order::where('user_id', '=', $user_id)->where('table_id', '=', $table->id)->get();
 
