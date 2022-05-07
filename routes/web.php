@@ -53,3 +53,4 @@ Route::get('/dashboard/{user_id}/activmenu/getlist', [App\Http\Controllers\Dashd
 Route::get('/{key}-{user_id}/menu', [App\Http\Controllers\QrUserController::class, 'newclient'])->name('newclient');
 Route::get('/menu/getproduct/{key}', [App\Http\Controllers\QrUserController::class, 'getProducts'])->name('getProducts');
 Route::get('/menu/product/{key}/{id}', [App\Http\Controllers\QrUserController::class, 'product'])->name('ClientProduct');
+Route::get('/menu/product/{user_id}/{key}/{id}/add', [App\Http\Controllers\QrUserController::class, 'productAdd'])->name('productAdd');

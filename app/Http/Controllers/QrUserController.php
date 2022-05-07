@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Qr;
 use App\Models\Newclient;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
 
 class QrUserController extends Controller
 {
@@ -61,8 +63,65 @@ class QrUserController extends Controller
 
         $product = Product::where('id', '=', $id)->first();
 
+        $table = QR::where('key', '=', $key)->where('user_id', '=', $product->user_id)->first();
 
-        return view('client.product',['product'=>$product]);
+        $order = Order::where('user_id', '=', $table->user_id)->where('table_id', '=', $table->id)->get();
+
+        $a = 0;
+        foreach ($order as $orders){
+            $products = Product::where('id', '=', $orders->product_id)->first();
+            $order[$a]->name = $products->name;
+            $order[$a]->img = $products->img;
+            $order[$a]->img = $products->img;
+            $order[$a]->price = $products->price * $orders->quantity;
+            $a++;
+        }
+
+        return view('client.product',[
+            'product'=>$product,
+            'key'=>$key,
+            'table'=> $table,
+            'order'=>$order
+            ]);
+
+    }
+    public function productAdd($user_id, $key, $id, Request $request){
+
+
+        if($request->get('quantity')){
+            $quantity = ( int )$request->get('quantity');
+        }else{
+            $quantity = 1;
+        }
+
+        $date = date("Y-m-d H:i:s");
+
+        $product = Product::where('id', '=', $id)->first();
+
+        $table = QR::where('key', '=', $key)->where('user_id', '=', $user_id)->first();
+
+        Order::create(['user_id'=>$user_id, 'table_id'=> $table->id,'product_id'=> $product->id , 'quantity' => $quantity, 'created_at'=> $date, 'status_order' => 'вибрано']);
+
+        $order = Order::where('user_id', '=', $user_id)->where('table_id', '=', $table->id)->get();
+
+        $a = 0;
+        foreach ($order as $orders){
+            $products = Product::where('id', '=', $orders->product_id)->first();
+            $order[$a]->name = $products->name;
+            $order[$a]->img = $products->img;
+            $order[$a]->img = $products->img;
+            $order[$a]->price = $products->price * $orders->quantity;
+            $a++;
+        }
+
+
+        $template = view('client.new_menu_add',
+            [
+                'order' => $order
+            ]
+        )->render();
+
+        return response()->json(array('html'=> $template), 200);
 
     }
 
